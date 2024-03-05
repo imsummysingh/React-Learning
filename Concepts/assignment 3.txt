@@ -1,0 +1,148 @@
+import React from "react";
+import  ReactDOM  from "react-dom/client";
+
+//Assignment 3
+/*
+<div>
+<h1>Assignment 3</h1>
+<h2>Assignment 2</h2>
+<h3>Assignment 1</h3>
+</div>
+*/
+
+//Q: Create a Nested header Element using React.createElement(h1,h2,h3 inside a div with class "title")
+//React.createElement
+const div = React.createElement("div",{
+    id:"container",
+    className:"title",
+    key:"title"
+},
+    React.createElement("h1",{key:"h1"}, "Assignment 1"),
+    React.createElement("h2",{key:"h2"}, "Assignment 2"),
+    React.createElement("h3",{key:"h3"}, "Assignment 3")
+);
+
+//Q: Create the same element using JSX
+//JSX- Creating Element
+const diva = (
+    <div className="Title" key="title">
+        <h1>Heading 1 from JSX</h1>
+        <h2>Heading 2 from JSX</h2>
+        <h3>Heading 3 from JSX</h3>
+    </div>
+)
+
+//Q: Create a functional component of the same with JSX
+//JSX- Component
+//Way1
+/*  const Div1 = ()=>{
+    return (<div className="Title" key="title">
+        <h1>Heading 1 from JSX way1</h1>
+        <h2>Heading 2 from JSX way1</h2>
+        <h3>Heading 3 from JSX way1</h3>
+    </div>)
+}  */
+
+//Q: Pass attribute into the tag in JSX
+//way2
+/* const Div2 = ()=>(
+    <div className="Title2" key="title2">
+        <h1 style={{color:"red"}}>Heading 1 from JSX way2</h1>
+        <h2 style={{color:"yellow"}}>Heading 2 from JSX way2</h2>
+        <h3 style={{color:"blue"}}>Heading 3 from JSX way2</h3>
+    </div>
+) */
+
+
+//Q: Composition of Component (Add a component inside another)
+//component inside component
+/* const Div1 = ()=>{
+    return (<div className="Title" key="title">
+        <h1 style={{color:"red"}}>Heading 1 from JSX Component 1</h1>
+    </div>)
+}
+
+const Div2 = ()=>{
+    return (<div className="Title" key="title">
+        <h1>Heading 1 from JSX way1</h1>
+        <Div1/>
+        <h2>Heading 2 from JSX way1</h2>
+        <h3>Heading 3 from JSX way1</h3>
+    </div>)
+} */
+
+//Q: {TitleComponent} vs {<TitleComponent/>} vs {<TitleComponent></TitleComponent>} in JSX.
+
+//create element using jsx---{TitleComponent}
+const Title1 = <h1>Title React elemnt using JSX</h1>;
+
+//create component using jsx---{<TitleComponent/>}
+const Title2 = ()=>{
+    return(
+        <h2 style={{color:"pink"}}>Title React component using JSX</h2>
+    )
+}
+
+//{<TitleComponent></TitleComponent>}
+ const Header = ()=>{
+    return(
+        <div className="header" key="titleHeader">
+            {Title1}
+            <h3 style={{color:"red"}}>---------------------------------------------------------</h3>
+            <Title2/>
+            <h3 style={{color:"red"}}>---------------------------------------------------------</h3>
+            <Title2></Title2>
+            <h3 style={{color:"red"}}>---------------------------------------------------------</h3>
+        </div>
+    )
+ }
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//root.render(diva);
+//root.render(div1);
+// root.render(<Div2/>)
+// root.render(<Div2/>)
+root.render(<Header/>)
+
+
+
+
+
+
+
+
+
+/**
+ * 
+ * Q: Create a Header Component from scratch using Functional Component with JSX
+    Add a Logo on Left
+    Add a search bar in middle
+    Add User icon on right
+    Add CSS to make it look nice
+ */
+ const Header = ()=>{
+    return(
+        <>
+            <header className="header">
+                <div className="left">
+                    <img src="" alt="logo"/>
+                </div>
+                <div className="middle">
+                    <input type="text" className="input" placeholder="search here"></input>
+                    <button>Search</button>
+                </div>
+                <div className="right">
+                    <img src="" alt="user Icon"/>
+                </div>
+            </header>
+        </>
+    )
+ }
+
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(<Header/>)
